@@ -1,18 +1,54 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
-    {{ dish.name }} <a href="{% url 'kitchen:dish-update' pk=dish.pk %}">Update</a>
-    <a href="{% url 'kitchen:dish-delete' pk=dish.pk %}">Delete</a><br>
-    {{ dish.description }} <br>
-    {{ dish.price }} <br>
-    {{ dish.dish_type.name }} <br>
-    {% for cook in dish.cooks.all %}
-      <li><a href="{% url 'kitchen:cook-detail' pk=cook.pk %}">{{ cook.username }} </a>
-        ({{ cook.first_name }} {{ cook.last_name }})</li>
 
-    {% endfor %}
-
-  </h1>
-
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <h1>{{ dish.name }}</h1>
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>Dish Type:</td>
+                    <td>
+                      <a href="{% url 'kitchen:dish-type-detail' pk=dish.dish_type.pk %}">
+                        {{ dish.dish_type.name }}
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Cooks:</td>
+                    <td>
+                      <ul class="list-unstyled">
+                        {% for cook in dish.cooks.all %}
+                          <li>
+                            <a href="{% url 'kitchen:cook-detail' pk=cook.pk %}">
+                              {{ cook.username }} ({{ cook.first_name }} {{ cook.last_name }})
+                            </a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Description:</td>
+                    <td>{{ dish.description }}</td>
+                  </tr>
+                  <tr>
+                    <td>Price:</td>
+                    <td>{{ dish.price }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <a href="{% url 'kitchen:dish-update' pk=dish.pk %}" class="btn btn-outline-primary mr-2">Update</a>
+            <a href="{% url 'kitchen:dish-delete' pk=dish.pk %}" class="btn btn-outline-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

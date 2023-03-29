@@ -17,6 +17,10 @@ class DishForm(forms.ModelForm):
 
 
 class CookCreationForm(UserCreationForm):
+    first_name = forms.CharField(required=True)
+    last_name = forms.CharField(required=True)
+    years_of_experience = forms.IntegerField(required=True)
+
     class Meta:
         model = Cook
         fields = UserCreationForm.Meta.fields + (

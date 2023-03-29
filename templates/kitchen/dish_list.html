@@ -1,13 +1,61 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <br>
-  <a href="{% url 'kitchen:dish-create' %}">Create</a>
-  <ul>
-  {% for dish in dish_list %}
-    <li><a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.id }}</a>
-      {{ dish.name }} {{ dish.dish_type }} {{ dish.price }}</li>
-  {% endfor %}
-  </ul>
 
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="text-center">Dishes</h3>
+          </div>
+          <div class="card-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Dish Type</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for dish in dish_list %}
+                  <tr>
+                    <td>
+                      <a href="{% url 'kitchen:dish-detail' pk=dish.pk %}">
+                        {{ dish.pk }}
+                      </a>
+                    </td>
+                    <td>
+                      <a href="{% url 'kitchen:dish-detail' pk=dish.pk %}">
+                        {{ dish.name }}
+                      </a>
+                    </td>
+                    <td>
+                      <a href="{% url 'kitchen:dish-type-detail' pk=dish.dish_type.pk %}">
+                        {{ dish.dish_type.name }}
+                      </a>
+                    </td>
+                    <td>{{ dish.price }}</td>
+                  </tr>
+                {% empty %}
+                  <tr>
+                    <td colspan="4">No dishes found.</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer">
+            <div class="row justify-content-center">
+              <div class="col-lg-4">
+                <a href="{% url 'kitchen:dish-create' %}" class="btn btn-block btn-primary">Create</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

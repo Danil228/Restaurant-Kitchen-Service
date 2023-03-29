@@ -10,7 +10,7 @@
     {{ cook.years_of_experience }} <br>
     {{ cook.username }} <br>
     {% for dish in cook.dishes.all %}
-      <li>{{ dish.name }}</li>
+      <li><a href="{% url 'kitchen:dish-detail' pk=dish.pk %}">{{ dish.name }}</a></li>
     {% endfor %}
   </h1>
 

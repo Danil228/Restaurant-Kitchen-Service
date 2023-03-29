@@ -1,10 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Restaurant Kitchen Service</h1>
-  <ul>
-    <li><strong>Dish Types: </strong>{{ num_dish_types }}</li>
-    <li><strong>Dishes: </strong>{{ num_dishes }}</li>
-    <li><strong>Cooks: </strong>{{ num_cooks }}</li>
-  </ul>
+  <div class="jumbotron">
+    <h1 class="display-4">Restaurant Kitchen Service</h1>
+    <hr class="my-4">
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <h2>{{ num_dish_types }}</h2>
+      <p>Types of dishes</p>
+      <p><a class="btn btn-secondary" href="{% url 'kitchen:dish-type-list' %}" role="button">View details &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>{{ num_dishes }}</h2>
+      <p>Number of dishes</p>
+      <p><a class="btn btn-secondary" href="{% url 'kitchen:dish-list' %}" role="button">View details &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>{{ num_cooks }}</h2>
+      <p>Number of cooks</p>
+      <p><a class="btn btn-secondary" href="{% url 'kitchen:cook-list' %}" role="button">View details &raquo;</a></p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted">Improve communication and rules between your cooks on the kitchen.</span>
+    </div>
+  </footer>
 {% endblock %}

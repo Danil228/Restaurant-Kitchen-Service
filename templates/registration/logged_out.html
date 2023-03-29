@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="text-center">Logged out!</h1>
+        </div>
+        <div class="card-body">
+          <p class="text-center">You have successfully logged out.</p>
+          <div class="text-center">
+            <a href="{% url 'login' %}" class="btn btn-primary">Login again</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
