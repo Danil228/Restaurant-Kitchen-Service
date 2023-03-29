@@ -26,11 +26,14 @@ class Cook(AbstractUser):
 class Dish(models.Model):
     name = models.CharField(max_length=63)
     description = models.TextField()
-    price = models.DecimalField
+    price = models.DecimalField(decimal_places=2, max_digits=7)
     dish_type = models.ForeignKey(DishType,
                                   on_delete=models.CASCADE,
                                   related_name="dishes")
     cooks = models.ManyToManyField(Cook, related_name="dishes")
+
+    class Meta:
+        ordering = ["dish_type__name", "name"]
 
     def __str__(self):
         return self.name

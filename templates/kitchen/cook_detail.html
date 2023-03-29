@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if user == cook or user.is_superuser %}
+    <a href="{% url 'kitchen:cook-update' pk=cook.pk%}">Update</a>
+    <a href="{% url 'kitchen:cook-delete' pk=cook.pk%}">Delete</a>
+  {% endif %}
+  <h1>
+    {{ cook.first_name }} {{ cook.last_name }}<br>
+    {{ cook.years_of_experience }} <br>
+    {{ cook.username }} <br>
+    {% for dish in cook.dishes.all %}
+      <li>{{ dish.name }}</li>
+    {% endfor %}
+  </h1>
+
+{% endblock %}

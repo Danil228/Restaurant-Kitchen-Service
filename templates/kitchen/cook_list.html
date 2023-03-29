@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <br>
+  <a href="{% url 'kitchen:cook-create' %}">Create</a>
+  <ul>
+  {% for cook in cook_list %}
+    <li><a href="{% url 'kitchen:cook-detail' pk=cook.id %}">{{ cook.username }}</a>
+      ({{ cook.first_name }} {{ cook.last_name }}) {% if user == cook %}(Me){% endif %} </li>
+  {% endfor %}
+  </ul>
+
+{% endblock %}

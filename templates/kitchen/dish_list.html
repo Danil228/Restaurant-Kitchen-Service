@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <br>
+  <a href="{% url 'kitchen:dish-create' %}">Create</a>
+  <ul>
+  {% for dish in dish_list %}
+    <li><a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.id }}</a>
+      {{ dish.name }} {{ dish.dish_type }} {{ dish.price }}</li>
+  {% endfor %}
+  </ul>
+
+{% endblock %}
