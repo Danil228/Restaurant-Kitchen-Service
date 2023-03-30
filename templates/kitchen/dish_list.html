@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block content %}
 
@@ -8,6 +9,10 @@
         <div class="card">
           <div class="card-header d-flex justify-content-between align-items-center">
             <h3 class="text-center">Dishes</h3>
+            <form action="" method="get" class="form-inline mx-auto d-flex">
+              {{ search_form|crispy }}
+              <input class="btn btn-outline-secondary" type="submit" value="🔎">
+            </form>
             <a href="{% url 'kitchen:dish-create' %}" class="btn btn-sm btn-success">Create</a>
           </div>
           <div class="card-body">
