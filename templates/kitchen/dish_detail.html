@@ -25,10 +25,10 @@
                       <ul class="list-unstyled">
                         {% for cook in dish.cooks.all %}
                           <li>
-                            <a href="{% url 'kitchen:cook-detail' pk=cook.pk %}">
+                            {{ cook.first_name }} {{ cook.last_name }}
+                            (<a href="{% url 'kitchen:cook-detail' pk=cook.pk %}">
                               {{ cook.username }}
-                            </a>
-                            ({{ cook.first_name }} {{ cook.last_name }})
+                            </a>)
                           </li>
                         {% endfor %}
                       </ul>
