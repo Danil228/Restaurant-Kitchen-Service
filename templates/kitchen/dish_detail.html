@@ -26,8 +26,9 @@
                         {% for cook in dish.cooks.all %}
                           <li>
                             <a href="{% url 'kitchen:cook-detail' pk=cook.pk %}">
-                              {{ cook.username }} ({{ cook.first_name }} {{ cook.last_name }})
+                              {{ cook.username }}
                             </a>
+                            ({{ cook.first_name }} {{ cook.last_name }})
                           </li>
                         {% endfor %}
                       </ul>
@@ -39,7 +40,7 @@
                   </tr>
                   <tr>
                     <td>Price:</td>
-                    <td>{{ dish.price }}</td>
+                    <td>{{ dish.price }}$</td>
                   </tr>
                 </tbody>
               </table>

@@ -6,8 +6,9 @@
     <div class="row justify-content-center">
       <div class="col-lg-8">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header d-flex justify-content-between align-items-center">
             <h3 class="text-center">Dishes</h3>
+            <a href="{% url 'kitchen:dish-create' %}" class="btn btn-sm btn-success">Create</a>
           </div>
           <div class="card-body">
             <table class="table table-hover">
@@ -17,27 +18,25 @@
                   <th>Name</th>
                   <th>Dish Type</th>
                   <th>Price</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 {% for dish in dish_list %}
                   <tr>
                     <td>
-                      <a href="{% url 'kitchen:dish-detail' pk=dish.pk %}">
                         {{ dish.pk }}
-                      </a>
                     </td>
                     <td>
-                      <a href="{% url 'kitchen:dish-detail' pk=dish.pk %}">
                         {{ dish.name }}
-                      </a>
                     </td>
                     <td>
-                      <a href="{% url 'kitchen:dish-type-detail' pk=dish.dish_type.pk %}">
                         {{ dish.dish_type.name }}
-                      </a>
                     </td>
-                    <td>{{ dish.price }}</td>
+                    <td>{{ dish.price }}$</td>
+                    <td>
+                      <a href="{% url 'kitchen:dish-detail' pk=dish.pk %}" class="btn btn-sm btn-primary">View</a>
+                    </td>
                   </tr>
                 {% empty %}
                   <tr>
@@ -49,8 +48,8 @@
           </div>
           <div class="card-footer">
             <div class="row justify-content-center">
-              <div class="col-lg-4">
-                <a href="{% url 'kitchen:dish-create' %}" class="btn btn-block btn-primary">Create</a>
+              <div class="col-lg-4 text-center">
+                {% include "includes/pagination.html" %}
               </div>
             </div>
           </div>

@@ -31,6 +31,7 @@ class DishTypeListView(LoginRequiredMixin, generic.ListView):
     model = DishType
     context_object_name = "dish_type_list"
     template_name = "kitchen/dish_type_list.html"
+    paginate_by = 5
 
 
 class DishTypeDetailView(LoginRequiredMixin, generic.DetailView):
@@ -64,6 +65,7 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
+    paginate_by = 5
 
 
 class DishDetailView(LoginRequiredMixin, generic.DetailView):
@@ -90,6 +92,7 @@ class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class CookListView(LoginRequiredMixin, generic.ListView):
     model = Cook
+    paginate_by = 5
 
 
 class CookDetailView(LoginRequiredMixin, generic.DetailView):
