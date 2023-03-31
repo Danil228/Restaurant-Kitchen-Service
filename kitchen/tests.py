@@ -1,16 +1,27 @@
 from django.test import TestCase
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from django.contrib.auth import get_user_model
 from kitchen.models import DishType, Cook, Dish
-from kitchen.forms import CookCreationForm, DishTypeSearchForm, DishSearchForm, CookSearchForm
+from kitchen.forms import (CookCreationForm,
+                           DishTypeSearchForm,
+                           DishSearchForm,
+                           CookSearchForm)
 
 
 class ModelTestCase(TestCase):
     def setUp(self):
         self.dish_type = DishType.objects.create(name="Main course")
-        self.cook = Cook.objects.create(username="john", first_name="John", last_name="Doe")
-        self.dish = Dish.objects.create(name="Spaghetti Carbonara", description="Pasta with bacon and eggs", price=9.99,
-                                        dish_type=self.dish_type)
+        self.cook = Cook.objects.create(
+            username="john",
+            first_name="John",
+            last_name="Doe"
+        )
+        self.dish = Dish.objects.create(
+            name="Spaghetti Carbonara",
+            description="Pasta with bacon and eggs",
+            price=9.99,
+            dish_type=self.dish_type
+        )
         self.dish.cooks.add(self.cook)
 
     def test_dish_type_str(self):
@@ -55,9 +66,11 @@ class CookCreationFormTestCase(TestCase):
         form = CookCreationForm(data=form_data)
         self.assertFalse(form.is_valid())
         self.assertEqual(form.errors["username"], ["This field is required."])
-        self.assertEqual(form.errors["first_name"], ["This field is required."])
+        self.assertEqual(form.errors["first_name"],
+                         ["This field is required."])
         self.assertEqual(form.errors["last_name"], ["This field is required."])
-        self.assertEqual(form.errors["years_of_experience"], ["This field is required."])
+        self.assertEqual(form.errors["years_of_experience"],
+                         ["This field is required."])
         self.assertEqual(form.errors["password1"], ["This field is required."])
         self.assertEqual(form.errors["password2"], ["This field is required."])
 
@@ -89,8 +102,14 @@ class ToggleAssignToDishTestCase(TestCase):
             username='testuser123123',
             password='testpass123132',
         )
-        self.cook1 = Cook.objects.create(first_name='Cook 1', username='cook1')
-        self.cook2 = Cook.objects.create(first_name='Cook 2', username='cook2')
+        self.cook1 = Cook.objects.create(
+            first_name='Cook 1',
+            username='cook1'
+        )
+        self.cook2 = Cook.objects.create(
+            first_name='Cook 2',
+            username='cook2'
+        )
         self.dish = Dish.objects.create(
             name='test dish',
             description='test description',

@@ -6,7 +6,11 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from kitchen.forms import DishForm, CookCreationForm, DishTypeSearchForm, DishSearchForm, CookSearchForm
+from kitchen.forms import (DishForm,
+                           CookCreationForm,
+                           DishTypeSearchForm,
+                           DishSearchForm,
+                           CookSearchForm)
 from kitchen.models import DishType, Dish, Cook
 
 
@@ -139,7 +143,9 @@ class CookListView(LoginRequiredMixin, generic.ListView):
         form = CookSearchForm(self.request.GET)
 
         if form.is_valid():
-            return queryset.filter(username__istartswith=form.cleaned_data["username"])
+            return queryset.filter(
+                username__istartswith=form.cleaned_data["username"]
+            )
 
 
 class CookDetailView(LoginRequiredMixin, generic.DetailView):
