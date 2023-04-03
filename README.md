@@ -5,6 +5,12 @@ Application aims to improve the communication and rules between your cooks on th
 
 [Restaurant Kitchen Service deployed to Render](https://kitchen-service-6rmx.onrender.com)
 
+```shell
+# You can test all features as an admin
+# authentication to view capabilities
+username: test_admin
+password: admin12345
+```
 ## Installing / Getting started
 
 A quick introduction of the minimal setup you need to get a hello world up &
@@ -22,6 +28,6 @@ python manage.py runserver
 ## Features
 
 What's all the bells and whistles this project can perform?
-* What's the main functionality
-* You can also do another thing
-* If you get really randy, you can even do this
+* Authentication functionality for Cooker/User
+* Managing dishes cookers & cuisines directly from interface
+* Powerful admin panel for advanced managing
