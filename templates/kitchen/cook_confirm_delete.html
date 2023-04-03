@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1>Delete cook: {{ cook.username }}?</h1>
+  <form action="" method="post" class="my-4">
+    {% csrf_token %}
+    <div class="form-group">
+      <input type="submit" value="Yes" class="btn btn-danger mr-2">
+      <a href="{% url 'kitchen:cook-detail' pk=cook.pk %}" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+{% endblock %}

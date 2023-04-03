@@ -1,0 +1,57 @@
+.jumbotron {
+background-image: url("https://images.unsplash.com/photo-1560092024-e4c4dbb4e6b5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8a2l0Y2hlbnMlMjBzdGF0aW9ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80");
+background-size: cover;
+height: 300px;
+color: black;
+}
+
+/* Style for the buttons */
+.btn-secondary {
+background-color: #6c757d;
+border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+background-color: #5a6268;
+border-color: #545b62;
+}
+
+/* Style for the footer */
+.footer {
+bottom: 0;
+width: 100%;
+height: 60px;
+background-color: #f5f5f5;
+}
+
+.footer .container {
+padding-top: 15px;
+}
+
+.footer .text-muted {
+margin: 10px 0;
+}
+
+/* Style for the navbar */
+
+.nav-link {
+color: #6c757d;
+}
+
+.nav-link:hover {
+color: #343a40;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  margin-top: auto;
+}
